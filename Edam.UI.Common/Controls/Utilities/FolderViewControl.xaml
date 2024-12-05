@@ -1,0 +1,37 @@
+﻿<!-- Copyright (c) Microsoft Corporation. All rights reserved. -->
+<!-- Licensed under the MIT License. See LICENSE in the project root for license information. -->
+
+<UserControl
+    x:Class="Edam.UI.Common.Controls.Utilities.FolderViewControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Edam.UI.Common.Controls.Utilities"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dg="using:CommunityToolkit.WinUI.UI.Controls"
+    mc:Ignorable="d">
+
+   <Grid Background="#F8F8F8">
+      <Grid.ColumnDefinitions>
+         <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="Auto" />
+         <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal"
+                  MinHeight="25" BorderThickness="0,0,0,1" BorderBrush="#E0E0E0">
+         
+      </StackPanel>
+      <dg:DataGrid Grid.Row="1" Grid.Column="0" ItemsSource="{x:Bind m_ViewModel.Items, Mode=TwoWay}" 
+            AutoGenerateColumns="False" RowBackground="#F6F6F6" AlternatingRowBackground="White"
+            x:Name="FileViewer" SelectionChanged="FileViewer_SelectionChanged">
+         <dg:DataGrid.Columns>
+            <dg:DataGridTextColumn Header="Name" Width="SizeToCells" Binding="{Binding Name}" IsReadOnly="True" />
+            <dg:DataGridTextColumn Header="Size (in bytes)" Width="150" Binding="{Binding Size}" IsReadOnly="True" />
+            <dg:DataGridTextColumn Header="Created Date" Width="SizeToCells" Binding="{Binding CreatedDateText}" IsReadOnly="True" />
+         </dg:DataGrid.Columns>
+      </dg:DataGrid>
+   </Grid>
+</UserControl>

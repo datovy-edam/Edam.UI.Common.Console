@@ -1,0 +1,37 @@
+﻿<UserControl
+    x:Class="Edam.UI.Common.Controls.Diagnostics.DiagnosticsLogSidePanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Edam.UI.Common.Controls.Diagnostics"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:diag="using:Edam.UI.Common.Controls.Diagnostics"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid Grid.Row="0" Grid.Column="1" Margin="0,1,0,0"
+          BorderBrush="#CFCFCF" BorderThickness="1,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="0,10">
+            <FontIcon HorizontalAlignment="Left" FontFamily="Segoe MDL2 Assets" FontSize="16" Margin="4,0"
+                  ToolTipService.ToolTip="Show Hide Diagnostics and Trace Messages Side Panel"
+                  Glyph="{x:Bind Expander.SelectedChevron, Mode=TwoWay}" PointerPressed="ToggleExplander" />
+
+            <FontIcon HorizontalAlignment="Left" FontFamily="Segoe MDL2 Assets" FontSize="16"
+                  ToolTipService.ToolTip="Clean all Entries" Foreground="Red"
+                  Glyph="&#xEDAE;"  PointerPressed="ClearContent" x:Name="ClearContentButton" />
+        </StackPanel>
+        
+        <diag:DiagnosticsLogControl VerticalAlignment="Stretch" Margin="0" 
+            Grid.Row="1" Grid.Column="0" x:Name="DiagnosticsLogViewer"
+            Visibility="{x:Bind Expander.PanelVisibility,Mode=TwoWay}"/>
+    </Grid>
+</UserControl>

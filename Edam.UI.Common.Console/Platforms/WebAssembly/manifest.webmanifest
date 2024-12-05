@@ -1,0 +1,10 @@
+{
+  "background_color": "#ffffff",
+  "description": "Edam.UI.Common.Console",
+  "display": "standalone",
+  "name": "Edam.UI.Common.Console",
+  "short_name": "Edam.UI.Common.Console",
+  "start_url": "/index.html",
+  "theme_color": "#ffffff",
+  "scope": "/"
+}
