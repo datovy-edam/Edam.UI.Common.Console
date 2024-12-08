@@ -15,7 +15,7 @@ Visible UI Resources within these libraries are targeting the Uno Platform.  In
 many instances it will be found that those have been written to support any kind
 of platform and eventually may be supporting Maui and Blazor.
 
-Other Common resurces and functionality is documented ahead.
+Other Common resources and functionality are documented ahead.
 
 ## Main Menu and Navigation
 
@@ -29,8 +29,8 @@ include instantiating panels or controls and navigating through them.
 
 The `NavigationControl.xaml` user control implements a general layout for the
 instanced pages and controls to be visible within a named UI Frame called `PanelControl`.
-The Main Menu don't need to be visible but managed and the `MenuController` just do that.
-Therefore setup new menu items by calling the `MenuController.SetupInstance` method.
+The Main Menu doesn't need to be visible but managed and the `MenuController` just do that.
+Therefore, setup new menu items by calling the `MenuController.SetupInstance` method.
 Take a look at the `NavigationControl` constructure:
 
 ```
@@ -59,7 +59,7 @@ of the Login process.
 
 ## Identity Management and Services
 
-As shown in the previous section the Login process gets intiated as the last step
+As shown in the previous section the Login process gets initiated as the last step
 of the `NavigationControl` constructure by calling the `ApplicationHelper.SetMenuOption`
 method.  The identity and management services are assumed to allow fully disconnected
 applications and therefore as a minimum a local Sqlite database is used to store
@@ -182,7 +182,7 @@ details about the domain of an entity:
 ]
 ```
 
-Note that while describing the data entity you are not concern and shouldn't be
+Note that while describing the data entity you are not concerned and shouldn't be
 concerned about how it will look to the end-user and concentrate on the task of
 having a well describe data entity element and associated meta data.
 
@@ -200,12 +200,12 @@ Description [           ]
 
 Also understand that you are describing each data element in detail and therefore
 the provided information can be used to manage the data entry such as min and max
-string length, available codes to pick from a drop-down list, and tool-tips
+string length, available codes to pick from a drop-down list, and tooltips
 to show when the user hover in any of the text editor boxes.
 
 Each of the described elements are defaulted to a base "element type" that since
 it was not specified will be defaulted to "10" (Column).  To specify a different
-element type add the "Type" attribute with the required value, available options
+element type, add the "Type" attribute with the required value, available options
 follow:
 
 ```
@@ -236,8 +236,8 @@ to enter the information, submit or cancel/close the dialog session.  Based on
 the gathered information a C# dynamic object is returned for the developer to
 get the info of each element attribute and do something with it.
 
-For more details go to the `Edam.Data.ReferenceData` (dll) library that suppoorts
-the implementation and interpretation of ths supported entity-elements.  Within
+For more details go to the `Edam.Data.ReferenceData` (dll) library that supports
+the implementation and interpretation of the supported entity-elements.  Within
 `Edam.UI.Common` `Controls.Helpers` folder the default Data Template Interpreter
 is available.
 
@@ -276,5 +276,5 @@ To open the form you could use the `Edam.UI.Common` - `Controls.Dialogs.DialogBo
   }
 ```
 
-You can follow the code to figureout how it is implemented by the default
-intepreter.
+You can follow the code to figure out how it is implemented by the default
+interpreter.
