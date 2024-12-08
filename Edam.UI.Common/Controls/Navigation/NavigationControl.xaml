@@ -60,30 +60,8 @@
          Visibility="Collapsed">
          <Frame x:Name="PanelContent" Margin="0,0,0,0" />
       </NavigationView>
-      
-      <Grid Grid.Row="0" Grid.Column="1"
-            Margin="0,1,0,0">
-            <Grid.RowDefinitions>
-               <RowDefinition Height="59" />
-               <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-               <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
-               <Button HorizontalAlignment="Left" x:Name="SidePanelToggle"
-                       ToolTipService.ToolTip="Show Hide Diagnostics and Trace Messages Side Panel"
-                       Height="30" BorderThickness="0" Click="SidePanelToggle_Click" Background="Transparent">
-                  <FontIcon HorizontalAlignment="Left" FontFamily="Segoe MDL2 Assets" FontSize="14"
-                            Glyph="{x:Bind m_ViewModel.Expander.SelectedChevron, Mode=TwoWay}" />
-               </Button>
-            </StackPanel>
-
-            <diag:DiagnosticsLogControl VerticalAlignment="Stretch" Margin="0" 
-                          Grid.Row="1" Grid.Column="0"
-                          Visibility="{x:Bind m_ViewModel.Expander.PanelVisibility,Mode=TwoWay}"/>
-      </Grid>
+      <diag:DiagnosticsLogSidePanel Grid.Row="0" Grid.Column="1" Margin="0,1,0,0" />
       
    </Grid>
 

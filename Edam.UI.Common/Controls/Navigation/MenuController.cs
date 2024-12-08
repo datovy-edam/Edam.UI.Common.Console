@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Controls;
 // -----------------------------------------------------------------------------
 using System.Collections.ObjectModel;
 using Edam.UI.Common.Menus;
+using Edam.Diagnostics;
 
 namespace Edam.UI.Common.Controls.Navigation;
 
@@ -74,6 +75,33 @@ public class MenuController : MenuItem, Menus.IMenu, IMenuItemParent
         return item;
     }
 
+    /// <summary>
+    /// Add Menu Item if it has not been already registered.  Note that the 
+    /// MenuOption property is unique among MenuItems therefore make sure that 
+    /// it is unique before trying to register a new menu.
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
+    public IMenuItem Add(MenuItem item)
+    {
+        var foundMenu = Find(item.MenuOption);
+        if (foundMenu != null)
+        {
+            ResultLog.Trace(item.MenuOption.ToString() +
+                " is already registered.", 
+                nameof(MenuController), SeverityLevel.Info);
+
+            return foundMenu;
+        }
+        m_Items.Add(item);
+        return item;
+    }
+
+    /// <summary>
+    /// Find Menu Option.
+    /// </summary>
+    /// <param name="option">option to find</param>
+    /// <returns></returns>
     public IMenuItem Find(MenuOption option)
     {
         IMenuItem selected = null;

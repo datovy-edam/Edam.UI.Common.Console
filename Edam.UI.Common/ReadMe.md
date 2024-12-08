@@ -2,11 +2,76 @@
 
 This project contains reusable resources on common UI required User Controls including:
 
+*Diagnostics Support*
 - DiagnosticsLogControl.xmls - control that uses existing Edam.Diagnositcs resources to display logged exceptions and issues.
 - DiagnosticsLogSidePanel.xamls - hosts the Diagnostics Log control with a drawer that expands upon request to display the log.
+
+*Identity Login - Logout* (see ""Identity Management and Services"" ahead)
 - KeyPadControl.xamls - display a key-pad that allows to enter codes.
 - AccountLoginControl.xamls - gather an organization id, user id and password.
 - AccountPinLoginControl.xamls - using the KeyPad allow user to enter a pin number.
+
+Visible UI Resources within these libraries are targeting the Uno Platform.  In
+many instances it will be found that those have been written to support any kind
+of platform and eventually may be supporting Maui and Blazor.
+
+Other Common resurces and functionality is documented ahead.
+
+## Main Menu and Navigation
+
+Each UI platform offers a collection of classes and resources to support navigation.
+To be agnostic to the specifics of an underlying UI some classes were created to
+do generic Menus and Navigation support.
+
+In this (Common) library those will be found under the `Edam.UI.Common.Controls.Navigation`
+namespace. The `MenuController` manage expected common Menus functionality that
+include instantiating panels or controls and navigating through them.
+
+The `NavigationControl.xaml` user control implements a general layout for the
+instanced pages and controls to be visible within a named UI Frame called `PanelControl`.
+The Main Menu don't need to be visible but managed and the `MenuController` just do that.
+Therefore setup new menu items by calling the `MenuController.SetupInstance` method.
+Take a look at the `NavigationControl` constructure:
+
+```
+public NavigationControl()
+{
+    this.InitializeComponent();
+    this.DataContext = m_ViewModel;
+
+    VisibleMenuItems.Source = m_ViewModel.VisibleItems;
+    ApplicationHelper.SetApplicationMenuControl(this);
+
+    m_MenuController = new MenuController(PanelContent, ViewModel.Items);
+
+    // add/update a menu option
+    ProjectViewerControl projectViewer = new ProjectViewerControl();
+    m_MenuController.SetupInstance(MenuOption.Projects, projectViewer);
+
+    ApplicationHelper.SetMenuOption(MenuOption.Login);
+}
+```
+
+Note that upon calling the `NavigationControl.xaml.cs` constructure the instance
+of `MenuController` is created.  In the above example the navigation get started
+by calling the `ApplicationHelper.SetMenuOption` that will trigger the initiation
+of the Login process.
+
+## Identity Management and Services
+
+As shown in the previous section the Login process gets intiated as the last step
+of the `NavigationControl` constructure by calling the `ApplicationHelper.SetMenuOption`
+method.  The identity and management services are assumed to allow fully disconnected
+applications and therefore as a minimum a local Sqlite database is used to store
+organization and user information that gets initiated upon the first use of the
+application.  Through the process a pin number is asked to be defined so end-users
+don't need to provide the credentials repeatedly and just provide the already
+registered pin-number.
+
+Login details and registration is managed through the related process within the
+`LoginViewModel` code while using the `AccountLoginControl` and `AccountPinLoginControl`
+User Control to gather the required information and execution of necessary functionality
+to register the data into the target repository (default: Sqlite DB).
 
 ## Data Templates
 Trying to find a way to quickly generate even simple forms to gather some basic
