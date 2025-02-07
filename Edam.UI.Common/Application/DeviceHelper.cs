@@ -39,7 +39,7 @@ namespace Edam.UI.Common.Application
       /// <param name="results">(optional) results if you like to receive
       /// task result details back</param>
       public static async void InitializeDeviceUser(
-         LDbConnection connection, 
+         LocalDatabaseConnection connection, 
          ResultsLog<List<DeviceUserViewModel>> results = null)
       {
          if (results == null)
@@ -73,10 +73,10 @@ namespace Edam.UI.Common.Application
          IWorker<List<DeviceUserViewModel>> worker = null)
       {
          // connect to the database
-         LDbConnection.InitializeDb();
+         LocalDatabaseConnection.InitializeDb();
          ResultsLog<List<DeviceUserViewModel>> results = 
             new ResultsLog<List<DeviceUserViewModel>>();
-         LDbConnection c = new LDbConnection();
+         LocalDatabaseConnection c = new LocalDatabaseConnection();
 
          // try to fetch device (primary) user...
          SQLite.CreateTableResult tblResults;

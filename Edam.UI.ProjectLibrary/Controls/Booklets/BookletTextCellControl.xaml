@@ -1,0 +1,21 @@
+﻿<UserControl
+    x:Class="Edam.UI.Controls.Booklets.BookletTextCellControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Edam.UI.Controls.Booklets"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:tk="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+   <local:FramePanelControl x:Name="PanelControl"
+      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" GotFocus="PanelControl_GotFocus">
+      <TextBox TextWrapping="Wrap" x:Name="TextInputPanel"
+             Text="{Binding m_ViewModel.CellText, Mode=TwoWay}"
+             AcceptsReturn="True"
+             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+             ScrollViewer.VerticalScrollBarVisibility="Auto"
+             PlaceholderText="Enter Text here"/>
+      <!--<tk:MarkdownTextBlock />-->
+   </local:FramePanelControl>
+</UserControl>

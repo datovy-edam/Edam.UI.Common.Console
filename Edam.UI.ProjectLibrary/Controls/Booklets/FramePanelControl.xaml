@@ -1,0 +1,64 @@
+﻿<UserControl
+    x:Class="Edam.UI.Controls.Booklets.FramePanelControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Edam.UI.Controls.Booklets"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="5,5" Padding="0">
+            <!--<StackPanel Orientation="Horizontal" ToolTipService.ToolTip="Move Cell Up"
+                     ToolTipService.Placement="Bottom" x:Name="UpButton">
+            <FontIcon Margin="2" FontSize="12"
+                      FontFamily="Segoe MDL2 Assets" Glyph="&#xE74A;" 
+                      PointerPressed="UpClicked" />
+         </StackPanel>-->
+            <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="Move Cell Down"
+                     ToolTipService.Placement="Bottom" x:Name="DownButton">
+                <FontIcon Margin="2,5" FontSize="12"
+                      FontFamily="Segoe MDL2 Assets" Glyph="&#xE74B;" 
+                      PointerPressed="DownClicked" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="2" Margin="5,5" Padding="0">
+            <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="Run"
+                     ToolTipService.Placement="Bottom" x:Name="PlayButton">
+                <FontIcon Margin="2" Foreground="DarkGreen" FontSize="12"
+                      FontFamily="Segoe MDL2 Assets" Glyph="&#xF5B0;" 
+                      PointerPressed="PlayClicked" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="Delete"
+                     ToolTipService.Placement="Bottom" x:Name="RemoveButton">
+                <FontIcon Margin="2,5" Foreground="Brown" FontSize="12"
+                      FontFamily="Segoe MDL2 Assets" Glyph="&#xE711;" 
+                      PointerPressed="RemoveItemClicked" />
+            </StackPanel>
+            <!--<StackPanel Orientation="Horizontal" ToolTipService.ToolTip="Add"
+                     ToolTipService.Placement="Bottom" x:Name="AddButton">
+            <FontIcon Margin="2,5,2,0" Foreground="#4f4f4f" FontSize="12"
+                      FontFamily="Segoe MDL2 Assets" Glyph="&#xE710;"
+                      PointerPressed="AddItemClicked" />
+         </StackPanel>-->
+        </StackPanel>
+
+        <ContentPresenter Grid.Row="0" Grid.Column="1" BorderBrush="LightBlue" BorderThickness="1"
+         HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+         Content="{Binding FrameContent, ElementName=Self}" MinHeight="30">
+
+        </ContentPresenter>
+    </Grid>
+</UserControl>

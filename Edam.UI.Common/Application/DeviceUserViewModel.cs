@@ -19,7 +19,7 @@ namespace Edam.UI.Common.Application
 {
 
    public class DeviceUserViewModel : DeviceUserData,
-      ILDbIntIdObject, IDeviceUserData
+      ILocalDatabaseIdNoObject, IDeviceUserData
    {
 
       #region -- 1.0 - constants / Macros...
@@ -317,7 +317,7 @@ namespace Edam.UI.Common.Application
 
       private async void InitializeInstance(int? idNo = null)
       {
-         LDbConnection c = new LDbConnection();
+         LocalDatabaseConnection c = new LocalDatabaseConnection();
          var r = await c.CreateTableAsync<DeviceUserViewModel>();
          c.Dispose();
          c = null;
@@ -391,7 +391,7 @@ namespace Edam.UI.Common.Application
       /// </summary>
       public void SaveRecord()
       {
-         LDbConnection c = new LDbConnection();
+         LocalDatabaseConnection c = new LocalDatabaseConnection();
          DeviceUserViewModel record = GetRecord();
          record.UserPassword = m_Password.EncryptedText;
          string errorMessage;
@@ -438,7 +438,7 @@ namespace Edam.UI.Common.Application
       public static IResultsLog DeleteRecord()
       {
          IResultsLog results = new ResultLog();
-         LDbConnection c = new LDbConnection();
+         LocalDatabaseConnection c = new LocalDatabaseConnection();
          try
          {
             Task<int> task = c.DeleteAsync<DeviceUserViewModel>(1);
@@ -464,7 +464,7 @@ namespace Edam.UI.Common.Application
       {
          Boolean isOk = false;
          String errMess;
-         LDbConnection c = new LDbConnection();
+         LocalDatabaseConnection c = new LocalDatabaseConnection();
          try
          {
             //var l = await c.GetIntIdObjectAsync<DeviceUserViewModel>(1);

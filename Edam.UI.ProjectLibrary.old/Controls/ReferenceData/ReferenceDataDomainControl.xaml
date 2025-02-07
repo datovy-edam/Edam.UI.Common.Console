@@ -1,0 +1,49 @@
+﻿<UserControl
+    x:Class="Edam.UI.Controls.ReferenceData.ReferenceDataDomainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lc="using:Edam.UI.Controls.ReferenceData"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+   <Grid BorderBrush="#EFEFEF"
+         BorderThickness=".5,0,0,0">
+      <Grid.ColumnDefinitions>
+         <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="Auto" />
+         <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <Border Grid.Row="0" Grid.Column="0" BorderThickness="0,0,0,1" BorderBrush="#EEEEEE">
+         <Grid Background="#F9F9F9">
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="Auto" />
+               <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+               <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0">
+               <CommandBar Background="#F9F9F9" DefaultLabelPosition="Right">
+                  <AppBarButton Icon="Add" Label="New" LabelPosition="Default" 
+                             Click="New_Click" ToolTipService.ToolTip="New" />
+               </CommandBar>
+            </StackPanel>
+            <StackPanel Margin="10,0" Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+               <TextBox
+                     Margin="0,0,2,0" Height="24" Width="250" 
+                     Text="{x:Bind ViewModel.DomainUri, Mode=TwoWay}" 
+                     PlaceholderText="Enter Search URI to find" />
+               <Button Content="Go" Click="SearchUri_Click" />
+            </StackPanel>
+         </Grid>
+      </Border>
+
+      <!--<Frame x:Name="DataGridFrame" Grid.Row="1" Grid.Column="0" />-->
+      <lc:ReferenceDataDomainGridControl x:Name="DomainGridControl" Grid.Row="1" Grid.Column="0" />
+   </Grid>
+</UserControl>

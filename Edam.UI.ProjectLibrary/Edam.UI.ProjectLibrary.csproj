@@ -31,4 +31,83 @@
     <!-- <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" RuntimeFrameworkVersion="10.0.22621.28" />
     <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22621.28" /> -->
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Edam.UI.Common\Edam.UI.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Edam.Common">
+      <HintPath>..\..\..\Edam.Common\Edam.Common\bin\Debug\net8.0\Edam.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Edam.Data.Asset.Services">
+      <HintPath>..\..\..\Edam.Data.Library\Edam.Data.Assets.Services\bin\Debug\net8.0\Edam.Data.Asset.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Edam.Data.AssetDb">
+      <HintPath>..\..\..\Edam.Data.Library\Edam.Data.AssetDb\bin\Debug\net8.0\Edam.Data.AssetDb.dll</HintPath>
+    </Reference>
+    <Reference Include="Edam.Data.AssetReference">
+      <HintPath>..\..\..\Edam.Data.Library\Edam.Data.AssetReference\bin\Debug\net8.0\Edam.Data.AssetReference.dll</HintPath>
+    </Reference>
+    <Reference Include="Edam.Data.Assets">
+      <HintPath>..\..\..\Edam.Data.Library\Edam.Data.Assets\bin\Debug\net8.0\Edam.Data.Assets.dll</HintPath>
+    </Reference>
+    <Reference Include="Edam.Data.DataServices">
+      <HintPath>..\..\..\Edam.Data.Library\Edam.Data.DataServices\bin\Debug\net8.0\Edam.Data.DataServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Edam.Data.ReferenceData">
+      <HintPath>..\..\..\Edam.Data.Library\Edam.Data.ReferenceData\bin\Debug\net8.0\Edam.Data.ReferenceData.dll</HintPath>
+    </Reference>
+    <Reference Include="Edam.Json">
+      <HintPath>..\..\..\Edam.Data.Library\Edam.Json\bin\Debug\net8.0\Edam.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="EmptyControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\Booklets\BookletCodeCellControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\Booklets\BookletPanelControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\Booklets\BookletTextCellControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\Booklets\FramePanelControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\Lexicon\DictionaryViewerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\Lexicon\TextSimilarityScoreViewerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\Assets\AssetMapSidePanelControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
 </Project>

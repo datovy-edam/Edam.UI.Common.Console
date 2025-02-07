@@ -19,6 +19,7 @@ using Edam.Application;
 using Edam.UI.Common.Controls.ReferenceLists;
 using menus = Edam.UI.Common.Menus;
 using Edam.UI.Common.Models.ReferenceData;
+using Edam.UI.Common.Controls.Editors;
 
 namespace Edam.UI.Common.Application;
 
@@ -306,6 +307,19 @@ public class ApplicationHelper
         string kstring = ReferenceDataHelper.GetConnectionStringKey();
         DataSourceInfo dataSource = DataSources.GetDataSource(kstring);
         return dataSource.ConnectionString;
+    }
+
+    #endregion
+    #region -- 4.00 - Code Editor support
+
+    /// <summary>
+    /// Fetch a code editor that support services related to the key.
+    /// </summary>
+    /// <param name="key">key</param>
+    /// <returns>returns the code editor interface instance</returns>
+    public static ICodeEditorControl? GetCodeEditorControl(string key)
+    {
+        return null;
     }
 
     #endregion

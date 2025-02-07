@@ -1,0 +1,81 @@
+﻿<UserControl
+    x:Class="Edam.UI.Controls.Booklets.BookletPanelControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Edam.UI.Controls.Booklets"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:am="using:Edam.UI.Controls.Assets"
+    xmlns:tk="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:lx="using:Edam.UI.Controls.Lexicon"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+   <Grid Background="#F8F8F8">
+      <Grid.ColumnDefinitions>
+         <ColumnDefinition Width="*" />
+         <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <Grid Grid.Row="0" Grid.Column="0">
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+         </Grid.ColumnDefinitions>
+         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+         </Grid.RowDefinitions>
+
+         <StackPanel Grid.Row="0" Grid.Column="0" Margin="10,0"
+                  HorizontalAlignment="Stretch" Orientation="Horizontal" MinHeight="25"
+                  BorderBrush="#E0E0E0" BorderThickness="0,0,0,1">
+            <!--<TextBox BorderThickness="0" PlaceholderText="Enter Booklet Title here"
+                  Background="Transparent" VerticalAlignment="Center" />
+         <AppBarButton Icon="Save" LabelPosition="Collapsed" Padding="0" Width="40"
+                       Foreground="Navy"/>
+         <AppBarSeparator />-->
+            <AppBarButton Icon="Add" LabelPosition="Collapsed" Padding="0" Width="40"
+                       ToolTipService.ToolTip="Add Cell">
+               <AppBarButton.Flyout>
+                  <MenuBarItemFlyout>
+                     <MenuFlyoutItem Text="Code Cell" Click="AddCodeCell_Click" />
+                     <MenuFlyoutItem Text="Text Cell" Click="AddTextCell_Click"/>
+                  </MenuBarItemFlyout>
+               </AppBarButton.Flyout>
+            </AppBarButton>
+            <AppBarButton Icon="Remote" LabelPosition="Collapsed" Padding="0" Width="40"
+                       Click="SemanticSimilarityCompare_Click" ToolTipService.ToolTip="Semantic Similarity Compare"
+                       Foreground="Blue"/>
+            <AppBarButton Icon="Play" LabelPosition="Collapsed" Padding="0" Width="40"
+                       Click="ExecuteBooklet_Click" ToolTipService.ToolTip="Execute Booklet"
+                       Foreground="Green"/>
+            <!--<AppBarButton Icon="Cancel" LabelPosition="Collapsed" Padding="0" Width="40"
+                       Click="DeleteCell_Click" ToolTipService.ToolTip="Remove Cell"
+                       Foreground="Brown"/>-->
+         </StackPanel>
+
+         <lx:TextSimilarityScoreViewerControl Grid.Row="1" Grid.Column="0"
+            x:Name="TextSimilarityScoreViewer"
+            />
+         
+         <ScrollViewer Grid.Row="2" Grid.Column="0">
+            <ListView SelectionMode="Single" x:Name="BookletList"
+                      SelectionChanged="BookletList_SelectionChanged" />
+         </ScrollViewer>
+
+         <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="0,6,0,5"
+                     HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <TextBlock Text="Add" VerticalAlignment="Center" />
+            <HyperlinkButton Content="+ Text" Click="AddTextCell_Click" Padding="3,0"/>
+            <TextBlock Text="or" VerticalAlignment="Center"/>
+            <HyperlinkButton Content="+ Code" Click="AddCodeCell_Click" Padding="3,0"/>
+            <TextBlock Text="Cell" VerticalAlignment="Center"/>
+         </StackPanel>
+      </Grid>
+      <am:AssetMapSidePanelControl x:Name="MapSidePanel" Grid.Row="0" Grid.Column="1"/>
+   </Grid>
+</UserControl>

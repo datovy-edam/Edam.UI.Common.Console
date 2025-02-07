@@ -23,7 +23,7 @@ namespace Edam.UI.Common.Controls.Accounts;
 
 public sealed partial class AccountPinLoginControl : UserControl, IMenuView
 {
-    private IMenuItemParent m_MenuItem = null;
+    private IMenuItemParent? m_MenuItem = null;
     private KeyPadViewModel m_ViewModel = new KeyPadViewModel();
 
     public KeyPadViewModel ViewModel
