@@ -1,0 +1,130 @@
+﻿<UserControl
+    x:Class="Edam.UI.Controls.Assets.AssetMapItemControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Edam.UI.Controls.Assets"
+    xmlns:nb="using:Edam.UI.Controls.Booklets"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dt="using:Edam.Data.AssetSchema"
+    xmlns:fv="using:Edam.UI.Common.Controls.Utilities"
+    mc:Ignorable="d">
+
+   <Grid Background="#EFEFEF">
+      <Grid.ColumnDefinitions>
+         <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="Auto"/>
+         <RowDefinition Height="Auto"/>
+         <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <StackPanel Grid.Row="0" Grid.Column="0">
+         <TextBlock Text="Map Items" Margin="17,2,0,0" />
+      </StackPanel>
+      
+      <ScrollViewer Grid.Row="1" Grid.Column="0"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    KeyDown="ScrollViewer_KeyDown"
+                    KeyUp="ScrollViewer_KeyUp">
+         <ListView HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+            ItemsSource="{x:Bind ViewModel.MapItemList, Mode=TwoWay}"
+            SelectedItem="{x:Bind ViewModel.SelectedMapItem, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+               <DataTemplate x:DataType="dt:AssetDataMapItem">
+                  <Grid BorderThickness="1" BorderBrush="LightBlue" Margin="0,4"
+                        Background="White">
+                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                     </Grid.ColumnDefinitions>
+                     <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                     </Grid.RowDefinitions>
+
+                     <ListView Grid.Row="0" Grid.Column="0"
+                               HorizontalAlignment="Stretch"
+                            SelectionChanged="SourceControl_SelectionChanged"                            
+                            ItemsSource="{Binding SourceElement}"
+                            x:Name="SourceControl">
+                        <ListView.ContextFlyout>
+                           <MenuFlyout>
+                              <MenuFlyoutItem Text="Delete" ToolTipService.ToolTip="Select Item then Delete" Icon="Delete" Click="SourceDeleteItem_Click"/>
+                           </MenuFlyout>
+                        </ListView.ContextFlyout>
+                        <ListView.ItemTemplate>
+                           <DataTemplate>
+                              <Border BorderThickness="0,0,0,1" BorderBrush="LightGray" Padding="0,4" Margin="0,0,0,4">
+                                 <TextBlock TextWrapping="WrapWholeWords" Text="{Binding DisplayPath}"/>
+                              </Border>
+                           </DataTemplate>
+                        </ListView.ItemTemplate>
+                     </ListView>
+
+                     <FontIcon Grid.Row="0" Grid.Column="1" Margin="20,0"
+                            Foreground="#4f4f4f" FontFamily="Segoe MDL2 Assets" Glyph="&#xF0AF;"/>
+
+                     <ListView Grid.Row="0" Grid.Column="2" 
+                               HorizontalAlignment="Stretch"
+                            SelectionChanged="TargetControl_SelectionChanged"
+                            ItemsSource="{Binding TargetElement}"
+                            x:Name="TargetControl">
+                        <ListView.ContextFlyout>
+                           <MenuFlyout>
+                              <MenuFlyoutItem Text="Delete" Icon="Delete" Click="TargetDeleteItem_Click"/>
+                           </MenuFlyout>
+                        </ListView.ContextFlyout>
+                        <ListView.ItemTemplate>
+                           <DataTemplate>
+                              <Border BorderThickness="0,0,0,1" BorderBrush="LightGray" Padding="0,4" Margin="0,0,0,4">
+                                 <TextBlock TextWrapping="WrapWholeWords" Text="{Binding DisplayPath}"/>
+                              </Border>
+                           </DataTemplate>
+                        </ListView.ItemTemplate>
+                     </ListView>
+
+                     <FontIcon Margin="4,5" Foreground="Brown" FontSize="12"
+                           FontFamily="Segoe MDL2 Assets" Glyph="&#xE711;" 
+                           ToolTipService.ToolTip="Delete"
+                           ToolTipService.Placement="Bottom" 
+                           Grid.Row="0" Grid.Column="3" Width="20"
+                           PointerPressed="Delete_PointerPressed" />
+                     
+                  </Grid>
+               </DataTemplate>
+            </ListView.ItemTemplate>
+         </ListView>
+      </ScrollViewer>
+
+      <TabView Grid.Row="2" Grid.Column="0" Background="#EFEFEF"
+                     VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                     IsAddTabButtonVisible="False" TabWidthMode="SizeToContent"
+                     >
+         <TabView.TabItems>
+            <TabViewItem Header="Use Cases">
+               <fv:FolderViewControl x:Name="FolderViewer" 
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            </TabViewItem>
+            <TabViewItem Header="Booklet">
+               <nb:BookletPanelControl x:Name="BookletPanel"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+               </nb:BookletPanelControl>
+            </TabViewItem>
+            <!--<TabViewItem Header="Documentation">
+               <StackPanel>
+
+               </StackPanel>
+            </TabViewItem>
+            <TabViewItem Header="Transformations">
+               <StackPanel>
+
+               </StackPanel>
+            </TabViewItem>-->
+         </TabView.TabItems>
+      </TabView>
+
+   </Grid>
+</UserControl>

@@ -1,0 +1,48 @@
+﻿<UserControl
+    x:Class="Edam.UI.Controls.Assets.AssetViewerControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Edam.UI.Controls.Assets"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dg="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:rd="using:Edam.UI.Controls.ReferenceData"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prj="using:Edam.UI.Controls.Projects"
+    mc:Ignorable="d">
+
+   <!-- The name of the TabViewItem(s) should not be changed since those are
+        used to establish the scope of commands/operations -->
+   <TabView VerticalAlignment="Stretch" IsAddTabButtonVisible="False" x:Name="TabViewer"
+            SelectionChanged="TabViewer_SelectionChanged" Padding="0,0" TabWidthMode="SizeToContent">
+      <TabView.TabItems>
+         <TabViewItem x:Name="DomainsTab" Header="Domain Asset">
+            <TabViewItem.IconSource>
+               <SymbolIconSource Symbol="ViewAll" />
+            </TabViewItem.IconSource>
+            <rd:ReferenceDataDomainControl x:Name="DataDomainControl" />
+         </TabViewItem>
+         <TabViewItem x:Name="FileTab" Header="File">
+            <TabViewItem.IconSource>
+               <SymbolIconSource Symbol="Document" />
+            </TabViewItem.IconSource>
+            <!--<prj:ProjectFileEditorControl x:Name="FileEditorControl"
+               DataContext="{x:Bind m_ViewModel}"/>-->
+            <Frame x:Name="FrameFileEditor" />
+         </TabViewItem>
+         <TabViewItem x:Name="AssetTab" Header="Asset" IsEnabled="False">
+            <TabViewItem.IconSource>
+               <SymbolIconSource Symbol="ShowResults" />
+            </TabViewItem.IconSource>
+            <!--<local:AssetDataElementGridControl x:Name="ElementGridControl" />-->
+            <Frame x:Name="FrameElementGrid" />
+         </TabViewItem>
+         <TabViewItem x:Name="UseCaseTab" Header="Use Cases" Visibility="Collapsed">
+            <TabViewItem.IconSource>
+               <SymbolIconSource Symbol="OtherUser" />
+            </TabViewItem.IconSource>
+            <!--<local:AssetUseCaseGridControl x:Name="UseCaseGridControl" />-->
+            <Frame x:Name="FrameUseCaseGrid" />
+         </TabViewItem>
+      </TabView.TabItems>
+   </TabView>
+</UserControl>

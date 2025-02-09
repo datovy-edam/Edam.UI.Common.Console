@@ -21,41 +21,39 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace Edam.UI.Controls.Assets
+namespace Edam.UI.Controls.Assets;
+
+
+public sealed partial class AssetMapSidePanelControl : UserControl
 {
+    private DataMapSidePanelViewModel m_ViewModel =
+       new DataMapSidePanelViewModel();
 
-   public sealed partial class AssetMapSidePanelControl : UserControl
-   {
-      private DataMapSidePanelViewModel m_ViewModel =
-         new DataMapSidePanelViewModel();
-
-      public DataMapSidePanelViewModel ViewModel
-      {
-         get { return m_ViewModel; }
-         set
-         {
+    public DataMapSidePanelViewModel ViewModel
+    {
+        get { return m_ViewModel; }
+        set
+        {
             m_ViewModel = value;
             DataContext = value;
-         }
-      }
+        }
+    }
 
-      public AssetMapSidePanelControl()
-      {
-         this.InitializeComponent();
-         DataContext = ViewModel;
-      }
+    public AssetMapSidePanelControl()
+    {
+        this.InitializeComponent();
+        DataContext = ViewModel;
+    }
 
-      /// <summary>
-      /// Toogle panel visibility...
-      /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
-      private void SidePanelToggle_Click(object sender, RoutedEventArgs e)
-      {
-         ViewModel.Expander.TogglePanelVisibility();
-      }
-
-   }
+    /// <summary>
+    /// Toogle panel visibility...
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void SidePanelToggle_Click(object sender, RoutedEventArgs e)
+    {
+        ViewModel.Expander.TogglePanelVisibility();
+    }
 
 }
 

@@ -1,0 +1,54 @@
+﻿<UserControl
+    x:Class="Edam.UI.Controls.Assets.AssetDataTreeControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Edam.UI.Controls.Assets"
+    xmlns:models="using:Edam.UI.Controls.DataModels"
+    xmlns:cnv="using:Edam.UI.Common.Resources"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    KeyDown="TreeView_KeyDown"
+    KeyUp="TreeView_KeyUp">
+
+   <UserControl.Resources>
+      <cnv:FolderFileIconConverter x:Key="FileConverter" />
+      <cnv:StringToBrushConverter x:Key="ColorKeyConverter" />
+   </UserControl.Resources>
+
+   <TreeView ScrollViewer.VerticalScrollMode="Auto" CanDragItems="False" CanDrag="False"
+               x:Name="TreeView" Background="#F9F9F9" VerticalAlignment="Stretch"
+               ItemsSource="{Binding ViewModel.TreeView.Children, Mode=TwoWay}"
+               SelectionMode="Single" SelectedItem="{Binding ViewModel.SelectedItem, Mode=TwoWay}"
+               IsDoubleTapEnabled="True" DoubleTapped="TreeView_DoubleTapped"
+               >
+      <TreeView.ItemTemplate>
+         <DataTemplate x:DataType="models:DataTreeModel">
+            <TreeViewItem Padding="0,0,10,0" ItemsSource="{Binding Children, Mode=TwoWay}">
+               <TreeViewItem.ContextFlyout>
+                  <MenuFlyout>
+
+                  </MenuFlyout>
+               </TreeViewItem.ContextFlyout>
+               <StackPanel>
+                  <StackPanel Orientation="Horizontal" 
+                              Visibility="{Binding TextVisibility, Mode=TwoWay}">
+                     <FontIcon FontFamily="Segoe MDL2 Assets" Foreground="{Binding VisitedBrush, Mode=TwoWay}"
+                               Glyph="{Binding Item.Type, Converter={StaticResource FileConverter}}"
+                               />
+                     <TextBlock Text="{Binding LinkText, Mode=TwoWay}" Margin="2,0,2,0" />
+                     <TextBlock x:Name="ItemText" Text="{Binding Item.Title}"
+                                Foreground="{Binding TextBrush, Mode=TwoWay}"
+                                FontWeight="{Binding TextWeight, Mode=TwoWay}"
+                                ToolTipService.ToolTip="{Binding ElementFullPath, Mode=TwoWay}"/>
+
+                     <TextBlock Text="{Binding VisitedCountText, Mode=TwoWay}" Margin="5,0,2,0"
+                                Visibility="{Binding VisitedVisibility, Mode=TwoWay}"/>
+                     
+                  </StackPanel>
+               </StackPanel>
+            </TreeViewItem>
+         </DataTemplate>
+      </TreeView.ItemTemplate>
+   </TreeView>
+</UserControl>

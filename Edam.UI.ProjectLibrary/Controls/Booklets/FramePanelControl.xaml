@@ -55,10 +55,10 @@
          </StackPanel>-->
         </StackPanel>
 
-        <ContentPresenter Grid.Row="0" Grid.Column="1" BorderBrush="LightBlue" BorderThickness="1"
-         HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-         Content="{Binding FrameContent, ElementName=Self}" MinHeight="30">
+        <ContentControl Grid.Row="0" Grid.Column="1" BorderBrush="LightBlue" BorderThickness="1"
+           HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+           Content="{Binding FrameContent, ElementName=Self}" MinHeight="30">
 
-        </ContentPresenter>
+        </ContentControl>
     </Grid>
 </UserControl>

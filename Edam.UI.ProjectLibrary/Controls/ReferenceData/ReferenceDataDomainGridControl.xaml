@@ -1,0 +1,41 @@
+﻿<UserControl
+    x:Class="Edam.UI.Controls.ReferenceData.ReferenceDataDomainGridControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Edam.UI.Controls.ReferenceData"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tk="using:CommunityToolkit.WinUI.UI.Controls"
+    mc:Ignorable="d">
+
+   <Border>
+      <tk:DataGrid x:Name="DataGrid"
+                   GridLinesVisibility="All"
+                   AlternatingRowBackground="#EAEAEA"
+                   Background="White"
+                   VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                   SelectedItem="{x:Bind ViewModel.SelectedItem, Mode=TwoWay}"
+                   ScrollViewer.VerticalScrollBarVisibility="Visible"
+                   ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                   AutoGenerateColumns="False" IsReadOnly="False"
+                   ItemsSource="{x:Bind ViewModel.Items, Mode=TwoWay}">
+      <tk:DataGrid.Columns>
+            <tk:DataGridTextColumn Header="ID"
+                                   MinWidth="100" CanUserSort="True"
+                                   Binding="{Binding DomainId}"/>
+            <tk:DataGridTextColumn Header="Prefix"
+                                   MinWidth="100" CanUserSort="True"
+                                   Binding="{Binding Prefix}"/>
+            <tk:DataGridTextColumn Header="URI"
+                                   MinWidth="300" CanUserSort="True"
+                                   Binding="{Binding DomainUri}"/>
+            <tk:DataGridTextColumn Header="Name"
+                                   MinWidth="250" CanUserSort="True"
+                                   Binding="{Binding DomainName}"/>
+            <tk:DataGridTextColumn Header="Description"
+                                   CanUserSort="True"
+                                   Binding="{Binding Description}"/>
+         </tk:DataGrid.Columns>
+      </tk:DataGrid>
+   </Border>
+</UserControl>

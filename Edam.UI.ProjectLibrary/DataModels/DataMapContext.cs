@@ -829,7 +829,7 @@ namespace Edam.UI.Controls.DataModels
       }
 
       #endregion
-      #region 4.00 - Lexicon Support
+      #region -- 4.00 - Lexicon Support
 
       /// <summary>
       /// Semantic Text Compare on selected booklet map item.
